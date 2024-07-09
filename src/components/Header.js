@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { Navbar, Container, Nav, Button, NavDropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
 const Header = ({ toggleSidebar }) => {
@@ -15,7 +15,20 @@ const Header = ({ toggleSidebar }) => {
           <Nav className="me-auto">
             <Nav.Link  as={NavLink} to="home">Home</Nav.Link>
             <Nav.Link  as={NavLink} to="about">About</Nav.Link>
-            <Nav.Link  as={NavLink} to="parentComponent">Child-to-Parent</Nav.Link>
+
+            <NavDropdown title="Task Lists" id="basic-nav-dropdown">
+ 
+              <NavDropdown.Item as={NavLink} to="parentComponent">ParentToChild</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="loginform"> LoginForm</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="buttoncomponent">ButtonComponent</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="appleimage">Apple Image</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to="book">Book</NavDropdown.Item>
+
+
+              {/* <NavDropdown.Divider /> */}
+              
+            </NavDropdown>
+
           </Nav>
         </Navbar.Collapse>
       </Container>

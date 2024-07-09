@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import './AppleBasket.css'; 
+// import imageasa from '../images/image8.jpg'
+
 
 class AppleBasket extends Component {
   state = {
@@ -26,6 +28,8 @@ class AppleBasket extends Component {
       let newCurrentImageIndex = prevState.currentImageIndex;
       let newApplesLeft = prevState.applesLeft;
       let newApplesRight = prevState.applesRight;
+
+      console.log("newApplesRight",newApplesRight);
 
       if (direction === 'left') {
         if (prevState.currentImageIndex > 0) {
@@ -57,6 +61,8 @@ class AppleBasket extends Component {
     const { applesLeft, applesRight, images, currentImageIndex } = this.state;
 
     return (
+        <>
+        <img src='/images/image1.jpg' alt="new image"/>
       <Container className="apple-basket text-center">
         <Row className="align-items-center">
           <Col xs={3}>
@@ -84,6 +90,7 @@ class AppleBasket extends Component {
           </Col>
         </Row>
       </Container>
+        </>
     );
   }
 }

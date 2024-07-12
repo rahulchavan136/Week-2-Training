@@ -29,7 +29,7 @@ class ButtonComponent extends Component {
 
   render() {
     return (
-      <div><br />
+      <div className='text-center'><br />
         <div id="prevText"></div>
         <div id="nextText"></div>
         <Button variant='danger' onClick={this.handleClick}>

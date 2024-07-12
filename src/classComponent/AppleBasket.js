@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import './AppleBasket.css'; 
-// import imageasa from '../images/image8.jpg'
-
+import './AppleBasket.css';
 
 class AppleBasket extends Component {
   state = {
     applesLeft: 3,
     applesRight: 7,
     images: [
-        process.env.PUBLIC_URL + '/images/image1.jpg',
-        process.env.PUBLIC_URL + '/images/image2.jpg',
-        process.env.PUBLIC_URL + '/images/image3.jpg',
-        process.env.PUBLIC_URL + '/images/image4.jpg',
-        process.env.PUBLIC_URL + '/images/image5.webp',
-        process.env.PUBLIC_URL + '/images/image6.webp',
-        process.env.PUBLIC_URL + '/images/image7.jpg',
-        process.env.PUBLIC_URL + '/images/image8.jpg',
-        process.env.PUBLIC_URL + '/images/image9.jpg',
-        process.env.PUBLIC_URL + '/images/image10.jpg'
-      ],
+      process.env.PUBLIC_URL + '/images/image1.jpg',
+      process.env.PUBLIC_URL + '/images/image2.jpg',
+      process.env.PUBLIC_URL + '/images/image3.jpg',
+      process.env.PUBLIC_URL + '/images/image4.jpg',
+      process.env.PUBLIC_URL + '/images/image5.webp',
+      process.env.PUBLIC_URL + '/images/image6.webp',
+      process.env.PUBLIC_URL + '/images/image7.jpg',
+      process.env.PUBLIC_URL + '/images/image8.jpg',
+      process.env.PUBLIC_URL + '/images/image9.jpg',
+      process.env.PUBLIC_URL + '/images/image10.jpg'
+    ],
     currentImageIndex: 0
   };
 
@@ -29,7 +27,7 @@ class AppleBasket extends Component {
       let newApplesLeft = prevState.applesLeft;
       let newApplesRight = prevState.applesRight;
 
-      console.log("newApplesRight",newApplesRight);
+      console.log("newApplesRight", newApplesRight);
 
       if (direction === 'left') {
         if (prevState.currentImageIndex > 0) {
@@ -61,36 +59,35 @@ class AppleBasket extends Component {
     const { applesLeft, applesRight, images, currentImageIndex } = this.state;
 
     return (
-        <>
-        <img src='/images/image1.jpg' alt="new image"/>
-      <Container className="apple-basket text-center">
-        <Row className="align-items-center">
-          <Col xs={3}>
-            <div>
-              <span className="apple-counter">{applesLeft}</span> apple
-            </div>
-          </Col>
-          <Col xs={6}>
-            <Button variant="secondary" onClick={() => this.handleArrowClick('left')}>←</Button>
-            <Image src={images[currentImageIndex]} fluid className="mx-3 apple-image" />
-            <Button variant="secondary" onClick={() => this.handleArrowClick('right')}>→</Button>
-          </Col>
-          <Col xs={3}>
-            <div>
-              <span className="apple-counter">{applesRight}</span> apple
-            </div>
-          </Col>
-        </Row>
-        <Row className="mt-3">
-          <Col xs={6}>
-            <div className="basket-name">basket1</div>
-          </Col>
-          <Col xs={6}>
-            <div className="basket-name">basket2</div>
-          </Col>
-        </Row>
-      </Container>
-        </>
+      <>
+        <Container className="apple-basket text-center">
+          <Row className="align-items-center">
+            <Col xs={3}>
+              <div>
+                <span className="apple-counter">{applesLeft}</span> apple
+              </div>
+            </Col>
+            <Col xs={6}>
+              <Button variant="secondary" onClick={() => this.handleArrowClick('left')}>←</Button>
+              <Image src={images[currentImageIndex]} fluid className="mx-3 apple-image" />
+              <Button variant="secondary" onClick={() => this.handleArrowClick('right')}>→</Button>
+            </Col>
+            <Col xs={3}>
+              <div>
+                <span className="apple-counter">{applesRight}</span> apple
+              </div>
+            </Col>
+          </Row>
+          <Row className="mt-3">
+            <Col xs={6}>
+              <div className="basket-name">basket1</div>
+            </Col>
+            <Col xs={6}>
+              <div className="basket-name">basket2</div>
+            </Col>
+          </Row>
+        </Container>
+      </>
     );
   }
 }

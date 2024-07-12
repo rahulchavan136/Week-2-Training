@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginResult from './LoginResult';
+import { Form, Button, Container } from 'react-bootstrap';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -9,60 +9,68 @@ class LoginForm extends Component {
       password: '',
       isLoggedIn: false,
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    const { name, value } = event.target;
+  handleChange = (event) => {
     this.setState({
-      [name]: value,
+      [event.target.name]: event.target.value,
     });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state;
-    if (username === 'admin' && password === 'admin123') {
+    if (username === 'admin' && password === 'password') {
       this.setState({ isLoggedIn: true });
     } else {
       this.setState({ isLoggedIn: false });
     }
-  }
+  };
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </label>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+      <Container className="mt-5">
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="formUsername">
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              type="text"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+              placeholder="Enter username"
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              placeholder="Enter password"
+            />
+          </Form.Group>
+
+          <Button className="mt-2" variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
         <LoginResult isLoggedIn={this.state.isLoggedIn} />
-      </div>
+      </Container>
     );
   }
 }
+
+const LoginResult = ({ isLoggedIn }) => (
+  <div>
+    {isLoggedIn ? (
+      <div className="alert alert-success mt-3">Login Successful!</div>
+    ) : (
+      <div className="alert alert-danger mt-3">Login Failed!</div>
+    )}
+  </div>
+);
 
 export default LoginForm;
